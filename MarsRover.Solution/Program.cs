@@ -1,27 +1,9 @@
-using OpenTelemetry.Logs;
-using OpenTelemetry.Metrics;
-using OpenTelemetry.Resources;
-using OpenTelemetry.Trace;
+using MarsRover.Solution.TelemetryConfiguration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenTelemetry()
-    .ConfigureResource(resource => resource
-        .AddService("MarsRoverAPI", "1.0.0"))
-    .WithMetrics(metrics => metrics
-        .AddAspNetCoreInstrumentation()
-        .AddHttpClientInstrumentation()
-        .AddMeter("MarsRoverAPI")
-        .AddOtlpExporter(options => { options.Endpoint = new Uri("http://localhost:4317"); }))
-    .WithTracing(tracing => tracing
-        .AddAspNetCoreInstrumentation(options => options.RecordException = true)
-        .AddHttpClientInstrumentation(options => options.RecordException = true)
-        .AddOtlpExporter(options => { options.Endpoint = new Uri("http://localhost:4317"); }));
-
-builder.Logging.AddOpenTelemetry(logging =>
-{
-    logging.AddOtlpExporter(options => { options.Endpoint = new Uri("http://localhost:4317"); });
-});
+builder.Services.AddOpenTelemetryServices(builder.Configuration);
+builder.Logging.AddOpenTelemetryLogging(builder.Configuration);
 
 var app = builder.Build();
 
