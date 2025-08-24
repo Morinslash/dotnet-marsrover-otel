@@ -2,10 +2,28 @@ using MarsRover.Solution.TelemetryConfiguration;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c => 
+    { c.SwaggerDoc
+        ("v1", new()
+        {
+            Title = "Mars Rover API",
+            Version = "v1",
+            Description = "API for Mars Rover"
+        });
+        
+    });
+
 builder.Services.AddOpenTelemetryServices(builder.Configuration);
 builder.Logging.AddOpenTelemetryLogging(builder.Configuration);
 
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mars Rover API v1");
+});
 
 var summaries = new[]
 {
@@ -25,7 +43,13 @@ app.MapGet("/weatherforecast", () =>
         return forecast;
     })
     .WithName("GetWeatherForecast")
-    .WithOpenApi();
+    .WithOpenApi(operation =>
+    {
+        operation.Summary = "Get weather forecast";
+        operation.Description = "Retrivs a 5-day weather forecast for Mars operation";
+        operation.Tags = [new Microsoft.OpenApi.Models.OpenApiTag {Name = "Weather"}];
+        return operation;
+    });
 
 app.Run();
 
