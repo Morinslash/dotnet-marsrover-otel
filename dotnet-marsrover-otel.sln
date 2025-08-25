@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRover.Solution", "MarsR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRover.Tests", "MarsRover.Tests\MarsRover.Tests.csproj", "{41BCF768-3FF3-4DE9-8F5A-F46808870370}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRover.ApiTests", "MarsRover.ApiTests\MarsRover.ApiTests.csproj", "{8FDC9465-3ECA-409F-A1BD-DF60C3EC482F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,18 @@ Global
 		{41BCF768-3FF3-4DE9-8F5A-F46808870370}.Release|x64.Build.0 = Release|Any CPU
 		{41BCF768-3FF3-4DE9-8F5A-F46808870370}.Release|x86.ActiveCfg = Release|Any CPU
 		{41BCF768-3FF3-4DE9-8F5A-F46808870370}.Release|x86.Build.0 = Release|Any CPU
+		{8FDC9465-3ECA-409F-A1BD-DF60C3EC482F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FDC9465-3ECA-409F-A1BD-DF60C3EC482F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FDC9465-3ECA-409F-A1BD-DF60C3EC482F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8FDC9465-3ECA-409F-A1BD-DF60C3EC482F}.Debug|x64.Build.0 = Debug|Any CPU
+		{8FDC9465-3ECA-409F-A1BD-DF60C3EC482F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8FDC9465-3ECA-409F-A1BD-DF60C3EC482F}.Debug|x86.Build.0 = Debug|Any CPU
+		{8FDC9465-3ECA-409F-A1BD-DF60C3EC482F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FDC9465-3ECA-409F-A1BD-DF60C3EC482F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FDC9465-3ECA-409F-A1BD-DF60C3EC482F}.Release|x64.ActiveCfg = Release|Any CPU
+		{8FDC9465-3ECA-409F-A1BD-DF60C3EC482F}.Release|x64.Build.0 = Release|Any CPU
+		{8FDC9465-3ECA-409F-A1BD-DF60C3EC482F}.Release|x86.ActiveCfg = Release|Any CPU
+		{8FDC9465-3ECA-409F-A1BD-DF60C3EC482F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
