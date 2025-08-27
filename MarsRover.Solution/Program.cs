@@ -2,6 +2,9 @@ using MarsRover.Solution.TelemetryConfiguration;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Remove Server option for security
+builder.WebHost.ConfigureKestrel(options => options.AddServerHeader = false);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => 
     { c.SwaggerDoc
@@ -18,6 +21,17 @@ builder.Services.AddOpenTelemetryServices(builder.Configuration);
 builder.Logging.AddOpenTelemetryLogging(builder.Configuration);
 
 var app = builder.Build();
+
+// Security headers middleware
+app.Use(async (context, next) =>
+{
+    // Add security headers upfront
+    context.Response.Headers["X-Content-Type-Options"] = "nosniff";
+    context.Response.Headers["X-Frame-Options"] = "DENY";
+    context.Response.Headers["X-XSS-Protection"] = "1; mode=block";
+    
+    await next();
+});
 
 app.UseSwagger();
 app.UseSwaggerUI(c =>
